@@ -13,7 +13,7 @@ int maxResult = 0;
 
 void binarySearch(int start, int end) {
 
-	if (start > end)
+	if (start > end)   // start 와 end 가 같아진 부분까지 탐색을 해야해서 'start > end' 되는 순간 리턴하도록 구현 
 		return;
 
 	int middle = (start + end) / 2;
