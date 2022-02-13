@@ -1,36 +1,39 @@
-#include <stdio.h>
-#include <queue>
+#include <iostream>
+#include <string>
 #include <vector>
 
 using namespace std;
 
-int N, M;
-
-vector<int> graph[110];
-bool visited[110] = { 0, };
+vector<int> graph[105];
+bool isVisted[105] = { 0, };
 
 int Count = 0;
 
-void dfs(int current) {
-	Count++;
-	visited[current] = true;
+void dfs(int start) {
+	isVisted[start] = true;
 
-	for (int i = 0; i < graph[current].size(); i++) {
-		int next = graph[current][i];
+	for (int i = 0; i < graph[start].size(); i++) {
+		int nextNode = graph[start][i];
 
-		if (visited[next] == false) {
-			dfs(next);
+		if (isVisted[nextNode] == false) {
+			Count++;
+			dfs(nextNode);
 		}
 	}
 }
 
 int main() {
-	scanf("%d", &N);
-	scanf("%d", &M);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
 
-	for (int i = 0; i < M; i++) {
+	int numComputer;
+	int numPair;
+
+	cin >> numComputer >> numPair;
+
+	for (int i = 0; i < numPair; i++) {
 		int a, b;
-		scanf("%d %d", &a, &b);
+		cin >> a >> b;
 
 		graph[a].push_back(b);
 		graph[b].push_back(a);
@@ -38,7 +41,10 @@ int main() {
 
 	dfs(1);
 
-	printf("%d\n", Count - 1);
+	cout << Count;
 
 	return 0;
 }
+
+// dfs
+// 1번 컴퓨터부터 항상 시작이고 1번 이후 부터 카운팅을 한다
