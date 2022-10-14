@@ -22,7 +22,7 @@ struct Fish
 void getResult(int board[4][4], Fish fish[16], int sharkY, int sharkX, int sum)
 {
 
-	int tempBoard[4][4];
+	int tempBoard[4][4]; // 원활한 백트랙킹을 위해 현재 턴에서 사용하는 복사 배열
 	Fish tempFish[16];
 	for (int i = 0; i < 4; i++)
 	{
